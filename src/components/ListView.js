@@ -15,7 +15,7 @@ const ListView = (props) => {
       <ListViewItems className={ (!!props.header) ? 'hasHeader' : '' }>
         {
           props.items.map(item => (
-            <ListViewItem key={item.id}>{ item.title }</ListViewItem>
+            <ListViewItem onClick={e => props.onItemClick(item, e)} key={item.id}>{ item.title }</ListViewItem>
           ))
         }
       </ListViewItems>
@@ -25,7 +25,8 @@ const ListView = (props) => {
 
 ListView.propTypes = {
   header: PropTypes.string,
-  items: PropTypes.array.isRequired
+  items: PropTypes.array.isRequired,
+  onItemClick: PropTypes.func.isRequired,
 };
 
 export default ListView;

@@ -19,11 +19,15 @@ class HomePage extends Component {
       },
     ]
   }
+  
+  onItemClick = (item, e) => {
+    console.log(item);
+  }
 
   render() {
     return (
       <Container>
-        <ListView header="My ListView" items={this.state.items} />
+        <ListView onItemClick={this.onItemClick} header="My ListView" items={this.state.items} />
       </Container>
     );
   }
