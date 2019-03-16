@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ListViewWrapper from './styles/ListViewWrapper';
-import ListViewItem from './styles/ListViewItem';
+import { ListViewItem, ListViewItems, ListViewHeader, ListViewWrapper } from './styles/ListViewStyles';
 
 class ListView extends Component {
   static propTypes = {
+    header: PropTypes.string,
     items: PropTypes.array.isRequired
   };
 
@@ -12,10 +12,19 @@ class ListView extends Component {
     return (
       <ListViewWrapper>
         {
-          this.props.items.map(item => (
-            <ListViewItem key={item.id}>{ item.title }</ListViewItem>
-          ))
+          this.props.header && (
+            <ListViewHeader>
+              { this.props.header }
+            </ListViewHeader>
+          )
         }
+        <ListViewItems className={ (!!this.props.header) ? 'hasHeader' : '' }>
+          {
+            this.props.items.map(item => (
+              <ListViewItem key={item.id}>{ item.title }</ListViewItem>
+            ))
+          }
+        </ListViewItems>
       </ListViewWrapper>
     );
   }

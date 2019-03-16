@@ -23,7 +23,7 @@ class HomePage extends Component {
   render() {
     return (
       <Container>
-        <ListView items={this.state.items} />
+        <ListView header="My ListView" items={this.state.items} />
       </Container>
     );
   }
